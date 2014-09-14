@@ -6,7 +6,21 @@ Created on 2014/09/14
 
 class Nonogram(object):
     def __init__(self):
-        pass
+        self._left = []
+        self._top = []
+    
+    def set_left(self, ary):
+        self._left = ary
+        
+    def set_top(self, ary):
+        
+        self._top =ary
+        
+    def row(self):
+        return len(self._left)
+    
+    def column(self):
+        return len(self._top)
     
 if __name__ == '__main__':
     pass

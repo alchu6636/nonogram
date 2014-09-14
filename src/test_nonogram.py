@@ -21,6 +21,18 @@ class Test(unittest.TestCase):
         f = Nonogram()
         self.assertNotEqual(f, False)
 
+    def test_set_left(self):
+        f = Nonogram()
+        self.assertEqual(f.row(), 0)
+        f.set_left([[0],[0]])
+        self.assertEqual(f.row(), 2)
+        
+    def test_set_top(self):
+        f = Nonogram()
+        self.assertEqual(f.column(), 0)
+        f.set_top([[0],[0],[0]])
+        self.assertEqual(f.column(), 3)
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
