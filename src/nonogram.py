@@ -69,7 +69,13 @@ class Nonogram(object):
         if before == Nonogram.WHITE and after == Nonogram.BLACK:
             raise ValueError
         
+    def _pickdown_row(self, pos, ar):
+        self._field[pos] = ar
     
+    def _pickdown_column(self, pos, ar):
+        for row in self._field:
+            row[pos] = ar.pop(0)
+            
     
 if __name__ == '__main__':
     pass

@@ -120,6 +120,20 @@ class Test(unittest.TestCase):
             f._check_update(Nonogram.WHITE, Nonogram.BLACK)
         with self.assertRaises(ValueError):
             f._check_update(Nonogram.BLACK, Nonogram.WHITE)
+
+    def test_pickdown(self):
+        f = Nonogram()
+        
+        f.set_left([[2],[1],[1]])
+        f.set_top([[2],[1,1]])
+        f._clear_field()
+        f._pickdown_row(1, [0,1])
+        r = f._pickup_column(0)
+        self.assertEqual(r, [2,0,2])
+        
+        f._pickdown_column(0, [0,0,1])
+        r = f._pickup_row(0)
+        self.assertEqual(r, [0, 2])
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
