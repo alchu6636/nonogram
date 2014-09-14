@@ -41,6 +41,24 @@ class Test(unittest.TestCase):
         f.solve()
         self.assertEqual(f._field, [0,0])
 
+    def test_check_total(self):
+        f = Nonogram()
+        f.set_left([[1],[0]])
+        f.set_top([[1]])
+        msg = f._check_total()
+        self.assertEqual(msg, "")
+        
+        f.set_left([[2],[1],[1]])
+        f.set_top([[2],[1,1]])
+        msg = f._check_total()
+        self.assertEqual(msg, "")
+        
+        f.set_left([[1],[0]])
+        f.set_top([[0]])
+        msg = f._check_total()
+        self.assertEqual(msg, "not match total left:top=1:0")
+        
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

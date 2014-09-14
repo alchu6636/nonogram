@@ -27,5 +27,13 @@ class Nonogram(object):
         '''stub'''
         self._field = [0,0]
     
+    def _check_total(self):
+        left_total = sum(map(sum, self._left))
+        top_total = sum(map(sum, self._top))
+        if left_total == top_total:
+            return ""
+        else:
+            return "not match total left:top=%d:%d" % (left_total, top_total)
+    
 if __name__ == '__main__':
     pass
