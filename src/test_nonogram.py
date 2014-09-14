@@ -100,6 +100,17 @@ class Test(unittest.TestCase):
         s = sum(map(sum, f._field))
         self.assertEqual(s, n*2)
         
+    def test_pickup(self):
+        f = Nonogram()
+        
+        f.set_left([[2],[1],[1]])
+        f.set_top([[2],[1,1]])
+        f._clear_field()
+        f._field[2][1] = 0
+        d = f._pickup_row(2)
+        self.assertEqual(d, [2,0])
+        c = f._pickup_column(1)
+        self.assertEqual(c, [2,2,0])
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

@@ -56,5 +56,14 @@ class Nonogram(object):
         '''fill all cell in field by UNKNOWN'''
         self._field = [[Nonogram.UNKNOWN for col in range(self.column())] for row in range(self.row())]
     
+    def _pickup_row(self, pos):
+        return self._field[pos]
+    
+    def _pickup_column(self, pos):
+        d = [r[pos] for r in self._field]
+        return d
+    
+    
+    
 if __name__ == '__main__':
     pass
