@@ -90,6 +90,17 @@ class Test(unittest.TestCase):
         msg = f._check_profile()
         self.assertEqual(msg, "profile over size")
         
+    def test_clear_field(self):
+        f = Nonogram()
+        
+        f.set_left([[2],[1],[1]])
+        f.set_top([[2],[1,1]])
+        f._clear_field()
+        n = f.row()*f.column()
+        s = sum(map(sum, f._field))
+        self.assertEqual(s, n*2)
+        
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

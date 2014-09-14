@@ -52,5 +52,9 @@ class Nonogram(object):
                 return "profile over size"
         return ""
     
+    def _clear_field(self):
+        '''fill all cell in field by UNKNOWN'''
+        self._field = [[Nonogram.UNKNOWN for col in range(self.column())] for row in range(self.row())]
+    
 if __name__ == '__main__':
     pass
