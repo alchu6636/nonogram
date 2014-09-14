@@ -1,0 +1,4 @@
+nonogram
+========
+
+picture logic puzzle
