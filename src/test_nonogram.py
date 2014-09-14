@@ -58,6 +58,32 @@ class Test(unittest.TestCase):
         msg = f._check_total()
         self.assertEqual(msg, "not match total left:top=1:0")
         
+    def test_line_len(self):
+        f = Nonogram()
+        l = f._line_len([3])
+        self.assertEqual(l, 3)
+        l = f._line_len([1,2])
+        self.assertEqual(l, 4)
+        l = f._line_len([1,2,3,4])
+        self.assertEqual(l, 13)
+        
+    def test_check_profile(self):
+        f = Nonogram()
+        
+        f.set_left([[2],[1],[1]])
+        f.set_top([[2],[1,1]])
+        msg = f._check_profile()
+        self.assertEqual(msg, "")
+        
+        f.set_left([[2],[1],[1]])
+        f.set_top([[1],[2,1]])
+        msg = f._check_profile()
+        self.assertEqual(msg, "profile over size")
+        
+        f.set_left([[1],[2,1]])
+        f.set_top([[2],[1],[1]])
+        msg = f._check_profile()
+        self.assertEqual(msg, "profile over size")
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

@@ -35,5 +35,18 @@ class Nonogram(object):
         else:
             return "not match total left:top=%d:%d" % (left_total, top_total)
     
+    def _line_len(self, prof):
+        '''calculate minimum line length by profile list'''
+        return sum(prof)+len(prof)-1
+    
+    def _check_profile(self):
+        for d in self._left:
+            if self._line_len(d) > len(self._top):
+                return "profile over size"
+        for d in self._top:
+            if self._line_len(d) > len(self._left):
+                return "profile over size"
+        return ""
+    
 if __name__ == '__main__':
     pass
