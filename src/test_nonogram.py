@@ -33,6 +33,12 @@ class Test(unittest.TestCase):
         f.set_top([[0],[0],[0]])
         self.assertEqual(f.column(), 3)
 
+    def test_solve(self):
+        f = Nonogram()
+        f.set_left([[0],[0]])
+        f.set_top([[0]])
+        f.solve()
+        self.assertEqual(f._field, [0,0])
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

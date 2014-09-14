@@ -22,5 +22,9 @@ class Nonogram(object):
     def column(self):
         return len(self._top)
     
+    def solve(self):
+        '''stub'''
+        self._field = [0,0]
+    
 if __name__ == '__main__':
     pass
