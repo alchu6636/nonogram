@@ -8,6 +8,7 @@ class Nonogram(object):
     def __init__(self):
         self._left = []
         self._top = []
+        self._field = []
     
     def set_left(self, ary):
         self._left = ary

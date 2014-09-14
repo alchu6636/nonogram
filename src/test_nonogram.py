@@ -37,6 +37,7 @@ class Test(unittest.TestCase):
         f = Nonogram()
         f.set_left([[0],[0]])
         f.set_top([[0]])
+        self.assertEqual(f._field, [])
         f.solve()
         self.assertEqual(f._field, [0,0])
 
