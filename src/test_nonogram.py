@@ -164,6 +164,31 @@ class Test(unittest.TestCase):
         fld = f._line2field([1,2,1])
         self.assertEqual(fld, [Nonogram.BLACK,Nonogram.WHITE,Nonogram.BLACK,
                                Nonogram.BLACK,Nonogram.WHITE,Nonogram.BLACK])
+
+    def test_slide_line(self):    
+        WT = Nonogram.WHITE
+        BK = Nonogram.BLACK
+        UN = Nonogram.UNKNOWN
+        f = Nonogram()
+
+        fld = f._slide_line([2], 2)
+        self.assertEqual(fld, [BK, BK])
+    
+        fld = f._slide_line([2], 3)
+        self.assertEqual(fld, [UN, BK, UN])
+        
+        fld = f._slide_line([2], 4)
+        self.assertEqual(fld, [UN]*4)
+       
+        fld = f._slide_line([3,1], 5)
+        self.assertEqual(fld, [BK,BK,BK,WT,BK])
+        
+        fld = f._slide_line([3,1], 6)
+        self.assertEqual(fld, [UN,BK,BK,UN,UN,UN])
+        
+        fld = f._slide_line([3,1], 7)
+        self.assertEqual(fld, [UN,UN,BK,UN,UN,UN,UN])
+        
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

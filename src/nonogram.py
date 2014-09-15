@@ -113,5 +113,21 @@ class Nonogram(object):
             line.pop(0)
         return result
     
+    def _slide_line(self, linep, length):
+        line = linep[:]
+        margin = length - self._line_len(line)
+        result = []
+        while len(line)>0:
+            unknownlen = min(line[0], margin)
+            result.extend([Nonogram.UNKNOWN]*unknownlen)
+            result.extend([Nonogram.BLACK]*(line[0]-unknownlen))
+            if len(line)>1:
+                if margin > 0:
+                    result.append(Nonogram.UNKNOWN)
+                else:
+                    result.append(Nonogram.WHITE)
+            line.pop(0)
+        result.extend([Nonogram.UNKNOWN]*margin)    
+        return result
 if __name__ == '__main__':
     pass
