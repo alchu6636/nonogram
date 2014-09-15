@@ -39,12 +39,11 @@ class Test(unittest.TestCase):
         self.assertEqual(f.column(), 3)
 
     def test_solve(self):
-        f = Nonogram()
-        f.set_left([[0],[0]])
-        f.set_top([[0]])
-        self.assertEqual(f._field, [])
+        f = self._create_pat32()
         f.solve()
-        self.assertEqual(f._field, [0,0])
+        self.assertEqual(f._field, [[1,1],
+                                    [2,0],
+                                    [2,1]])
 
     def test_check_total(self):
         f = Nonogram()

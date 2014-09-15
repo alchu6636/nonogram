@@ -29,8 +29,24 @@ class Nonogram(object):
     
     def solve(self):
         '''stub'''
-        self._field = [0,0]
+        self._check_profile()
+        self._clear_field()
+        #prev = copy.deepcopy(self._field)
+        for r in range(self.row()):
+            self._solve_row(r)
+        for c in range(self.column()):
+            self._solve_column(c)    
+            
+    def _solve_row(self, row):
+        if self._line_len(self._left[row]) == self.column():
+            line = self._line2field(self._left[row])
+            self._pickdown_row(row, line)
     
+    def _solve_column(self, col):
+        if self._line_len(self._top[col]) == self.row():
+            line = self._line2field(self._top[col])
+            self._pickdown_column(col, line)
+
     def _check_total(self):
         left_total = sum(map(sum, self._left))
         top_total = sum(map(sum, self._top))
