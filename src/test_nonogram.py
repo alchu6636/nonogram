@@ -95,10 +95,7 @@ class Test(unittest.TestCase):
         self.assertEqual(msg, "profile over size")
         
     def test_clear_field(self):
-        f = Nonogram()
-        
-        f.set_left([[2],[1],[1]])
-        f.set_top([[2],[1,1]])
+        f = self._create_pat32()
         f._clear_field()
         n = f.row()*f.column()
         s = sum(map(sum, f._field))
