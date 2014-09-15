@@ -79,7 +79,15 @@ class Nonogram(object):
         for row in self._field:
             self._check_update(row[pos], ar[0])
             row[pos] = ar.pop(0)
-            
+          
+    def _line2field(self, line):
+        result = []
+        while len(line)>0:
+            result.extend([Nonogram.BLACK]*line[0])
+            if len(line)>1:
+                result.append(Nonogram.WHITE)
+            line.pop(0)
+        return result
     
 if __name__ == '__main__':
     pass

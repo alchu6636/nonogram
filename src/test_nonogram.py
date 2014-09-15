@@ -144,6 +144,17 @@ class Test(unittest.TestCase):
         with self.assertRaises(ValueError):
             f._pickdown_column(0, [Nonogram.WHITE]*3)
         
+    def test_line2field(self):
+        f = Nonogram()
+        
+        fld = f._line2field([3])
+        self.assertEqual(fld, [Nonogram.BLACK]*3)
+        fld = f._line2field([1,1])
+        self.assertEqual(fld, [Nonogram.BLACK,Nonogram.WHITE,Nonogram.BLACK])
+        fld = f._line2field([1,2,1])
+        self.assertEqual(fld, [Nonogram.BLACK,Nonogram.WHITE,Nonogram.BLACK,
+                               Nonogram.BLACK,Nonogram.WHITE,Nonogram.BLACK])
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
