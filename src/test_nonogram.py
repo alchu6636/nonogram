@@ -102,10 +102,7 @@ class Test(unittest.TestCase):
         self.assertEqual(s, n*2)
         
     def test_pickup(self):
-        f = Nonogram()
-        
-        f.set_left([[2],[1],[1]])
-        f.set_top([[2],[1,1]])
+        f = self._create_pat32()
         f._clear_field()
         f._field[2][1] = 0
         d = f._pickup_row(2)
@@ -123,10 +120,7 @@ class Test(unittest.TestCase):
             f._check_update(Nonogram.BLACK, Nonogram.WHITE)
 
     def test_pickdown(self):
-        f = Nonogram()
-        
-        f.set_left([[2],[1],[1]])
-        f.set_top([[2],[1,1]])
+        f = self._create_pat32()
         f._clear_field()
         f._pickdown_row(1, [Nonogram.WHITE,Nonogram.BLACK])
         r = f._pickup_column(0)
