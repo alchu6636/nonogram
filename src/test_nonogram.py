@@ -112,6 +112,15 @@ class Test(unittest.TestCase):
         c = f._pickup_column(1)
         self.assertEqual(c, [2,2,0])
         
+    def test_check_update(self):
+        f = Nonogram()
+        f._check_update(Nonogram.UNKNOWN, Nonogram.WHITE)
+        f._check_update(Nonogram.UNKNOWN, Nonogram.BLACK)
+        with self.assertRaises(ValueError):
+            f._check_update(Nonogram.WHITE, Nonogram.BLACK)
+        with self.assertRaises(ValueError):
+            f._check_update(Nonogram.BLACK, Nonogram.WHITE)
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

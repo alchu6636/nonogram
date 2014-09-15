@@ -63,6 +63,12 @@ class Nonogram(object):
         d = [r[pos] for r in self._field]
         return d
     
+    def _check_update(self, before, after):
+        if before == Nonogram.BLACK and after == Nonogram.WHITE:
+            raise ValueError
+        if before == Nonogram.WHITE and after == Nonogram.BLACK:
+            raise ValueError
+        
     
     
 if __name__ == '__main__':
