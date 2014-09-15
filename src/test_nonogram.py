@@ -127,17 +127,22 @@ class Test(unittest.TestCase):
         f.set_left([[2],[1],[1]])
         f.set_top([[2],[1,1]])
         f._clear_field()
-        f._pickdown_row(1, [0,1])
+        f._pickdown_row(1, [Nonogram.WHITE,Nonogram.BLACK])
         r = f._pickup_column(0)
-        self.assertEqual(r, [2,0,2])
+        self.assertEqual(r, [Nonogram.UNKNOWN,
+                             Nonogram.WHITE,
+                             Nonogram.UNKNOWN])
         with self.assertRaises(ValueError):
-            f._pickdown_row(1, [0,0])
+            f._pickdown_row(1, [Nonogram.WHITE,Nonogram.WHITE])
+
         
-        f._pickdown_column(0, [0,0,1])
+        f._pickdown_column(0, [Nonogram.WHITE,
+                               Nonogram.WHITE,
+                               Nonogram.BLACK])
         r = f._pickup_row(0)
-        self.assertEqual(r, [0, 2])
+        self.assertEqual(r, [Nonogram.WHITE, Nonogram.UNKNOWN])
         with self.assertRaises(ValueError):
-            f._pickdown_column(0, [0,0,0])
+            f._pickdown_column(0, [Nonogram.WHITE]*3)
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
