@@ -38,14 +38,12 @@ class Nonogram(object):
             self._solve_column(c)    
             
     def _solve_row(self, row):
-        if self._line_len(self._left[row]) == self.column():
-            line = self._line2field(self._left[row])
-            self._pickdown_row(row, line)
+        line = self._slide_line(self._left[row], self.column())
+        self._pickdown_row(row, line)
     
     def _solve_column(self, col):
-        if self._line_len(self._top[col]) == self.row():
-            line = self._line2field(self._top[col])
-            self._pickdown_column(col, line)
+        line = self._slide_line(self._top[col], self.row())
+        self._pickdown_column(col, line)
 
     def _check_total(self):
         left_total = sum(map(sum, self._left))
