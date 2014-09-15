@@ -20,6 +20,11 @@ class Test(unittest.TestCase):
     def test_create(self):
         f = Nonogram()
         self.assertNotEqual(f, False)
+        
+    def test_constant(self):
+        self.assertEqual(Nonogram.WHITE, 0)
+        self.assertEqual(Nonogram.BLACK, 1)
+        self.assertEqual(Nonogram.UNKNOWN, 2)
 
     def test_set_left(self):
         f = Nonogram()

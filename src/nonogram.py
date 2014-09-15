@@ -5,6 +5,10 @@ Created on 2014/09/14
 '''
 
 class Nonogram(object):
+    WHITE = 0
+    BLACK = 1
+    UNKNOWN = 2
+    
     def __init__(self):
         self._left = []
         self._top = []
