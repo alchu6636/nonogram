@@ -138,6 +138,22 @@ class Test(unittest.TestCase):
         with self.assertRaises(ValueError):
             f._pickdown_column(0, [Nonogram.WHITE]*3)
         
+    def test_picdown_row_unknown(self):
+        f = self._create_pat32()
+        f._clear_field()
+        f._pickdown_row(0, [Nonogram.UNKNOWN, Nonogram.BLACK])
+        f._pickdown_row(0, [Nonogram.WHITE, Nonogram.UNKNOWN])
+        r = f._pickup_row(0)
+        self.assertEqual(r, [Nonogram.WHITE, Nonogram.BLACK])
+        
+    def test_picdown_column_unknown(self):
+        f = self._create_pat32()
+        f._clear_field()
+        f._pickdown_column(0, [Nonogram.UNKNOWN, Nonogram.BLACK, Nonogram.UNKNOWN])
+        f._pickdown_column(0, [Nonogram.WHITE, Nonogram.UNKNOWN, Nonogram.UNKNOWN])
+        r = f._pickup_column(0)
+        self.assertEqual(r, [Nonogram.WHITE, Nonogram.BLACK, Nonogram.UNKNOWN])
+
     def test_line2field(self):
         f = Nonogram()
         

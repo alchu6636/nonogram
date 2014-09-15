@@ -84,17 +84,25 @@ class Nonogram(object):
             raise ValueError
         if before == Nonogram.WHITE and after == Nonogram.BLACK:
             raise ValueError
+        if after == Nonogram.UNKNOWN:
+            return False
+        else:
+            return True
         
     def _pickdown_row(self, pos, ar):
         row = self._field[pos]
         for idx in range(len(row)):
-            self._check_update(row[idx], ar[0])
-            row[idx] = ar.pop(0)
+            if self._check_update(row[idx], ar[0]):
+                row[idx] = ar.pop(0)
+            else:
+                ar.pop(0)
     
     def _pickdown_column(self, pos, ar):
         for row in self._field:
-            self._check_update(row[pos], ar[0])
-            row[pos] = ar.pop(0)
+            if self._check_update(row[pos], ar[0]):
+                row[pos] = ar.pop(0)
+            else:
+                ar.pop(0)
           
     def _line2field(self, line):
         result = []
