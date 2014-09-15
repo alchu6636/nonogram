@@ -72,11 +72,15 @@ class Test(unittest.TestCase):
         l = f._line_len([1,2,3,4])
         self.assertEqual(l, 13)
         
-    def test_check_profile(self):
+
+    def _create_pat32(self):
         f = Nonogram()
-        
-        f.set_left([[2],[1],[1]])
-        f.set_top([[2],[1,1]])
+        f.set_left([[2], [1], [1]])
+        f.set_top([[2], [1, 1]])
+        return f
+
+    def test_check_profile(self):
+        f = self._create_pat32()
         msg = f._check_profile()
         self.assertEqual(msg, "")
         
