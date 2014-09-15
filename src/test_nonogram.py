@@ -130,10 +130,14 @@ class Test(unittest.TestCase):
         f._pickdown_row(1, [0,1])
         r = f._pickup_column(0)
         self.assertEqual(r, [2,0,2])
+        with self.assertRaises(ValueError):
+            f._pickdown_row(1, [0,0])
         
         f._pickdown_column(0, [0,0,1])
         r = f._pickup_row(0)
         self.assertEqual(r, [0, 2])
+        with self.assertRaises(ValueError):
+            f._pickdown_column(0, [0,0,0])
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
