@@ -164,7 +164,11 @@ class PosIter(object):
         return i
     
 class LineMaker(object):  
-    pass
+    def __init__(self, profile, width):
+        self._profile = profile
+        self._width = width
+        
+        
 
 if __name__ == '__main__':
     pass

@@ -74,7 +74,7 @@ class TestPosIter(unittest.TestCase):
         
 class TestLineMaker(unittest.TestCase):
     def test_create(self):
-        LineMaker()
+        LineMaker([1], 2)
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
