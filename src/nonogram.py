@@ -138,11 +138,31 @@ class PosIter(object):
         if self._ar == []:
             self._ar = [0]*self._nitem
             return self._ar
-        elif sum(self._ar) < self._total:
+        if sum(self._ar) < self._total:
             self._ar[0] += 1
             return self._ar
-        else:
+        # sum == total
+        if self._is_last():
             return None
+        idx = self._mostleft()
+        self._ar[idx] = 0
+        self._ar[idx+1] += 1
+        return self._ar
     
+    def _is_last(self):
+        if sum(self._ar) < self._total:
+            return False
+        for i in range(len(self._ar)):
+            if self._ar[i] != 0 and i < len(self._ar)-1:
+                return False
+        return True
+    
+    def _mostleft(self):
+        for i in range(len(self._ar)):
+            if self._ar[i] != 0:
+                return i
+        return i
+    
+        
 if __name__ == '__main__':
     pass

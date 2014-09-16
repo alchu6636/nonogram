@@ -19,7 +19,7 @@ class TestPosIter(unittest.TestCase):
     def test_next10(self):
         p = PosIter(1, 0)
         self._nexts(p, [[0]])
-
+        
     def test_next11(self):
         p = PosIter(1, 1)
         self._nexts(p, [[0],
@@ -30,6 +30,25 @@ class TestPosIter(unittest.TestCase):
         self._nexts(p, [[0],
                        [1],
                        [2]])
+    
+    def test_next20(self):
+        p = PosIter(2, 0)
+        self._nexts(p, [[0,0]])
+        
+    def test_next21(self):
+        p = PosIter(2, 1)
+        self._nexts(p, [[0,0],
+                        [1,0],
+                        [0,1]])
+        
+    def test_is_last(self):
+        p = PosIter(2, 1)
+        p.next()
+        self.assertEqual(p._is_last(), False)
+        p.next()
+        self.assertEqual(p._is_last(), False)
+        p.next()
+        self.assertEqual(p._is_last(), True)
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
