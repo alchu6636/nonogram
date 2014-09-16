@@ -4,7 +4,10 @@ Created on 2014/09/16
 @author: alchu
 '''
 import unittest
-from nonogram import LineMaker, PosIter
+from nonogram import Nonogram, LineMaker, PosIter
+
+BK = Nonogram.BLACK
+WT = Nonogram.WHITE
 
 class TestPosIter(unittest.TestCase):
 
