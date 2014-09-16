@@ -163,6 +163,8 @@ class PosIter(object):
                 return i
         return i
     
-        
+class LineMaker(object):  
+    pass
+
 if __name__ == '__main__':
     pass

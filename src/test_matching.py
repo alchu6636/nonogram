@@ -4,7 +4,7 @@ Created on 2014/09/16
 @author: alchu
 '''
 import unittest
-from nonogram import PosIter
+from nonogram import LineMaker, PosIter
 
 class TestPosIter(unittest.TestCase):
 
@@ -71,6 +71,10 @@ class TestPosIter(unittest.TestCase):
         self.assertEqual(p._is_last(), False)
         p.next()
         self.assertEqual(p._is_last(), True)
+        
+class TestLineMaker(unittest.TestCase):
+    def test_create(self):
+        LineMaker()
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
