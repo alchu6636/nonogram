@@ -41,6 +41,16 @@ class TestPosIter(unittest.TestCase):
                         [1,0],
                         [0,1]])
         
+    def test_next22(self):
+        p = PosIter(2, 2)
+        self._nexts(p, [[0,0],
+                        [1,0],
+                        [2,0],
+                        [0,1],
+                        [1,1],
+                        [0,2]])
+        
+        
     def test_is_last(self):
         p = PosIter(2, 1)
         p.next()
