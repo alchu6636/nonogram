@@ -129,7 +129,7 @@ class Nonogram(object):
         return result
 
 class PosIter(object):
-    def __init__(self):
+    def __init__(self, items, total):
         pass
     
 if __name__ == '__main__':

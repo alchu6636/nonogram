@@ -10,7 +10,7 @@ class TestPosIter(unittest.TestCase):
 
 
     def test_create(self):
-        PosIter()
+        PosIter(2, 0)
 
 
 if __name__ == "__main__":
