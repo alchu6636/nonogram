@@ -127,5 +127,10 @@ class Nonogram(object):
             line.pop(0)
         result.extend([Nonogram.UNKNOWN]*margin)    
         return result
+
+class PosIter(object):
+    def __init__(self):
+        pass
+    
 if __name__ == '__main__':
     pass
