@@ -99,6 +99,15 @@ class TestLineMaker(unittest.TestCase):
             lm = LineMaker(prof, width)
             self.assertEqual(lm._postotal(), expect)
             
+    def test_pos2line(self):
+        lm = LineMaker([2,2], 6)
+        line = lm._pos2line([0,0])
+        self.assertEqual(line, [BK,BK,WT,BK,BK,WT])
+        line = lm._pos2line([1,0])
+        self.assertEqual(line, [WT,BK,BK,WT,BK,BK])
+        line = lm._pos2line([0,1])
+        self.assertEqual(line, [BK,BK,WT,WT,BK,BK])
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
     unittest.main()

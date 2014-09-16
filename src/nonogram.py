@@ -176,6 +176,20 @@ class LineMaker(object):
         '''calculate PosIter total'''
         return self._width - sum(self._profile) - len(self._profile) + 1
     
-
+    def _pos2line(self, pos):
+        p = pos[:]
+        p.append(self._postotal()-sum(p))
+        if len(p) > 2:
+            p[1:-1] = map(lambda x: x+1, p[1:-1])
+        buf = []
+        for i in range(len(self._profile)):
+            buf.extend([Nonogram.WHITE]*p[i])
+            buf.extend([Nonogram.BLACK]*self._profile[i])
+        buf.extend([Nonogram.WHITE]*p[-1])
+        return buf
+    
+                   
+            
+    
 if __name__ == '__main__':
     pass
