@@ -129,8 +129,18 @@ class Nonogram(object):
         return result
 
 class PosIter(object):
-    def __init__(self, items, total):
-        pass
+    def __init__(self, nitem, total):
+        self._nitem = nitem
+        self._total = total
+        self._ar = []
+    
+    def next(self):
+        if self._ar == []:
+            self._ar = [0]*self._nitem
+            return self._ar
+        else:
+            return None
+        
     
 if __name__ == '__main__':
     pass
