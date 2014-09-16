@@ -84,6 +84,21 @@ class TestLineMaker(unittest.TestCase):
         line = lm.next()
         self.assertEqual(line, [BK, WT])
         
+    def test_postotal(self):
+        data = [[[1], 1, 0],
+                [[1], 2, 1],
+                [[2], 3, 1],
+                [[1,1], 3, 0],
+                [[1,1], 4, 1],
+                [[2,3], 8, 2],
+                [[3,2,2], 10, 1],
+                [[1,1,1], 5, 0]
+                ]
+        while data:
+            prof, width, expect = data.pop(0)
+            lm = LineMaker(prof, width)
+            self.assertEqual(lm._postotal(), expect)
+            
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
     unittest.main()

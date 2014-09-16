@@ -172,6 +172,10 @@ class LineMaker(object):
         '''stub'''
         return [1,0]
         
+    def _postotal(self):
+        '''calculate PosIter total'''
+        return self._width - sum(self._profile) - len(self._profile) + 1
+    
 
 if __name__ == '__main__':
     pass
