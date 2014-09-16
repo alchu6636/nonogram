@@ -138,9 +138,11 @@ class PosIter(object):
         if self._ar == []:
             self._ar = [0]*self._nitem
             return self._ar
+        elif sum(self._ar) < self._total:
+            self._ar[0] += 1
+            return self._ar
         else:
             return None
-        
     
 if __name__ == '__main__':
     pass

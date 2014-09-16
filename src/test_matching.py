@@ -20,6 +20,17 @@ class TestPosIter(unittest.TestCase):
         p = PosIter(1, 0)
         self._nexts(p, [[0]])
 
+    def test_next11(self):
+        p = PosIter(1, 1)
+        self._nexts(p, [[0],
+                       [1]])
+        
+    def test_next12(self):
+        p = PosIter(1, 2)
+        self._nexts(p, [[0],
+                       [1],
+                       [2]])
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
     unittest.main()
