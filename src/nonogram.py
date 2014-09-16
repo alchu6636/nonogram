@@ -168,6 +168,9 @@ class LineMaker(object):
         self._profile = profile
         self._width = width
         
+    def next(self):
+        '''stub'''
+        return [1,0]
         
 
 if __name__ == '__main__':

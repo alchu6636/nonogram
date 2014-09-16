@@ -79,6 +79,11 @@ class TestLineMaker(unittest.TestCase):
     def test_create(self):
         LineMaker([1], 2)
         
+    def test_next(self):
+        lm = LineMaker([1], 2)
+        line = lm.next()
+        self.assertEqual(line, [BK, WT])
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
     unittest.main()
