@@ -138,7 +138,10 @@ class TestLineMaker(unittest.TestCase):
         
     def test_line_or(self):
         n = Nonogram()
-        self.assertEqual(n._line_or([WT,BK,BK],[BK,BK,WT]),[UN,BK,UN])
+        self.assertEqual(n._line_or([WT,BK,BK],[BK,BK,WT]), [UN,BK,UN])
+        self.assertEqual(n._line_or([UN,BK,UN],[WT,BK,BK]), [UN,BK,UN])
+        
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
     unittest.main()

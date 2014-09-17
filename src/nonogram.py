@@ -136,6 +136,15 @@ class Nonogram(object):
                 return False
         return True
     
+    def _line_or(self, linea, lineb):
+        result = []
+        for (a, b) in zip(linea, lineb):
+            if a == b:
+                result.append(a)
+            else:
+                result.append(Nonogram.UNKNOWN)
+        return result
+    
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem
