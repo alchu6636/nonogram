@@ -43,12 +43,12 @@ class Test(unittest.TestCase):
         f.solve()
         self.assertEqual(f._field, [[1,1],
                                     [1,0],
-                                    [2,1]])
+                                    [0,1]])
         f = Nonogram()
         f.set_left([[2], [1, 1]])
         f.set_top([[2], [1], [1]])
         f.solve()
-        self.assertEqual(f._field, [[1,1,2],
+        self.assertEqual(f._field, [[1,1,0],
                                     [1,0,1]])
 
     def test_check_total(self):

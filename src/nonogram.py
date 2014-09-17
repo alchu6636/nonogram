@@ -36,6 +36,10 @@ class Nonogram(object):
             self._solve_row(r)
         for c in range(self.column()):
             self._solve_column(c)    
+        for r in range(self.row()):
+            self._solve_row_match(r)
+        for c in range(self.column()):
+            self._solve_column_match(c)    
             
     def _solve_row(self, row):
         line = self._slide_line(self._left[row], self.column())
@@ -44,6 +48,16 @@ class Nonogram(object):
     def _solve_column(self, col):
         line = self._slide_line(self._top[col], self.row())
         self._pickdown_column(col, line)
+
+    def _solve_row_match(self, row):
+        line = self._pickup_row(row)
+        result = self._line_match(line, self._left[row])
+        self._pickdown_row(row, result)
+
+    def _solve_column_match(self, column):
+        line = self._pickup_column(column)
+        result = self._line_match(line, self._top[column])
+        self._pickdown_column(column, result)
 
     def _check_total(self):
         left_total = sum(map(sum, self._left))
