@@ -24,11 +24,18 @@ class Test(unittest.TestCase):
                [2,3],
                [3,1],
                [1]]
+        expect = [[0, 0, 1, 1, 1, 0, 0],
+                  [0, 1, 1, 1, 1, 1, 0],
+                  [1, 1, 0, 1, 0, 1, 1],
+                  [0, 1, 1, 1, 1, 1, 0],
+                  [0, 0, 1, 1, 1, 0, 0],
+                  [0, 0, 1, 0, 1, 0, 0],
+                  [0, 1, 0, 0, 0, 1, 0]]
         n = Nonogram()
         n.set_left(left)
         n.set_top(top)
         n.solve()
-        self.assertEqual(n._field, [])
+        self.assertEqual(n._field, expect)
 
 
 if __name__ == "__main__":
