@@ -214,6 +214,12 @@ class Test(unittest.TestCase):
         result = f._repr_top()
         self.assertEqual(result, ["    3"," 1  2"])
         
+    def test_repr(self):
+        f = self._create_pat32()
+        f.solve()
+        result = f.repr()
+        self.assertEqual(len(result), 47)
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

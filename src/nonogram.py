@@ -213,7 +213,17 @@ class Nonogram(object):
         buf2 = [[r[col] for r in buf] for col in range(len(buf[0]))]
         buf2 = map(lambda x:" ".join(x), buf2)
         return buf2
-            
+    
+    def repr(self):
+        left = self._repr_left()
+        top = self._repr_top()
+        field = self._repr_field()
+        middle = " "*len(left[0])+"+"+"-"*len(field[0])
+        top = map(lambda x:" "*(len(left[0])+1)+x, top)
+        bottom = zip(left, field)
+        bottom = map(lambda x:"|".join(x), bottom)
+        return "\n".join(top)+"\n"+middle+"\n"+"\n".join(bottom)
+        
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem
