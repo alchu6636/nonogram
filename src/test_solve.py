@@ -36,7 +36,48 @@ class Test(unittest.TestCase):
         n.set_top(top)
         n.solve()
         self.assertEqual(n._field, expect)
-
+        
+    def test28943(self):
+        '''
+        http://www.minicgi.net/logic/logic.html?num=28943
+        '''
+        left = [[12],
+                [12],
+                [1,1,1,1],
+                [12],
+                [12],
+                [1,1,1,1],
+                [12],
+                [13],
+                [12,2],
+                [2,2,2,2],
+                [2,2,2,2],
+                [2,2],
+                [2,2]
+                ]
+        top = [[1],
+               [5],
+               [6],
+               [2],
+               [2,2,5],
+               [11],
+               [2,2,3],
+               [2,2,3],
+               [9],
+               [2,2,7],
+               [2,2,7],
+               [9],
+               [2,2,2],
+               [2,2,5],
+               [11],
+               [2,2,1]
+               ]
+        expect = []
+        n = Nonogram()
+        n.set_left(left)
+        n.set_top(top)
+        n.solve()
+        self.assertEqual(n._field, expect)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
