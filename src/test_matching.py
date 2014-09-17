@@ -141,6 +141,19 @@ class TestLineMaker(unittest.TestCase):
         self.assertEqual(n._line_or([WT,BK,BK],[BK,BK,WT]), [UN,BK,UN])
         self.assertEqual(n._line_or([UN,BK,UN],[WT,BK,BK]), [UN,BK,UN])
         
+    def test_line_match(self):
+        n = Nonogram()
+        prof = [1]
+        data = [[[UN,UN], [UN,UN]],
+                [[UN,BK], [WT,BK]],
+                [[BK,UN], [BK,WT]],
+                [[UN,WT], [BK,WT]],
+                [[WT,UN], [WT,BK]]
+                ]
+        while data:
+            (f, expect) = data.pop(0)
+            result = n._line_match(f, prof)
+            self.assertEqual(result, expect)
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']

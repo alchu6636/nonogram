@@ -145,6 +145,20 @@ class Nonogram(object):
                 result.append(Nonogram.UNKNOWN)
         return result
     
+    def _line_match(self, line, prof):
+        lm = LineMaker(prof, len(line))
+        current = []
+        while True:
+            buf = lm.next()
+            if not buf:
+                break
+            if self._is_fit(line, buf):
+                if current:
+                    current = self._line_or(current, buf)
+                else:
+                    current = buf
+        return current
+    
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem
