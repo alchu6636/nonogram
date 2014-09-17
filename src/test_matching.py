@@ -81,8 +81,29 @@ class TestLineMaker(unittest.TestCase):
         
     def test_next(self):
         lm = LineMaker([1], 2)
-        line = lm.next()
-        self.assertEqual(line, [BK, WT])
+        expect = [[BK,WT],
+                  [WT,BK]
+                  ]
+        while expect:
+            self.assertEqual(lm.next(), expect.pop(0))
+        self.assertEqual(lm.next(), None)
+
+    def test_next39(self):        
+        lm = LineMaker([2,1,2], 9)
+        expect = [[BK,BK,WT,BK,WT,BK,BK,WT,WT],
+                  [WT,BK,BK,WT,BK,WT,BK,BK,WT],
+                  [WT,WT,BK,BK,WT,BK,WT,BK,BK],
+                  [BK,BK,WT,WT,BK,WT,BK,BK,WT],
+                  [WT,BK,BK,WT,WT,BK,WT,BK,BK],
+                  [BK,BK,WT,WT,WT,BK,WT,BK,BK],
+                  [BK,BK,WT,BK,WT,WT,BK,BK,WT],
+                  [WT,BK,BK,WT,BK,WT,WT,BK,BK],
+                  [BK,BK,WT,WT,BK,WT,WT,BK,BK],
+                  [BK,BK,WT,BK,WT,WT,WT,BK,BK],
+                  ]
+        while expect:
+            self.assertEqual(lm.next(), expect.pop(0))
+        self.assertEqual(lm.next(), None)
         
     def test_postotal(self):
         data = [[[1], 1, 0],

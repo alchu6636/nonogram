@@ -167,10 +167,13 @@ class LineMaker(object):
     def __init__(self, profile, width):
         self._profile = profile
         self._width = width
+        self._pos = PosIter(len(self._profile), self._postotal())
         
     def next(self):
-        '''stub'''
-        return [1,0]
+        pos = self._pos.next()
+        if not pos:
+            return None
+        return self._pos2line(pos)
         
     def _postotal(self):
         '''calculate PosIter total'''
