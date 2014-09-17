@@ -193,6 +193,15 @@ class Nonogram(object):
             buf.append(" ".join(point))
         return buf
     
+    def _repr_left(self):
+        buf = []
+        for prof in self._left:
+            buf.append(" ".join(map(str, prof)))
+        maxlen = max(map(len, buf))
+        buf = map(lambda x:" "*maxlen+x, buf)
+        buf = map(lambda x:x[-maxlen:], buf)
+        return buf
+        
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem

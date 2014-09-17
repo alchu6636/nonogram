@@ -202,6 +202,12 @@ class Test(unittest.TestCase):
         result = f._repr_field()
         self.assertEqual(result, ["WW  .  ?","WW WW  ."])
         
+    def test_repr_left(self):
+        f = Nonogram()
+        f.set_left([[1],[1,2]])
+        result = f._repr_left()
+        self.assertEqual(result, ["  1","1 2"])
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
