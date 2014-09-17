@@ -4,6 +4,8 @@ Created on 2014/09/14
 @author: alchu
 '''
 
+import copy
+
 class Nonogram(object):
     WHITE = 0
     BLACK = 1
@@ -31,15 +33,19 @@ class Nonogram(object):
         '''stub'''
         self._check_profile()
         self._clear_field()
-        #prev = copy.deepcopy(self._field)
         for r in range(self.row()):
             self._solve_row(r)
         for c in range(self.column()):
             self._solve_column(c)    
-        for r in range(self.row()):
-            self._solve_row_match(r)
-        for c in range(self.column()):
-            self._solve_column_match(c)    
+        for n in range(100):
+            prev = copy.deepcopy(self._field)
+            for r in range(self.row()):
+                self._solve_row_match(r)
+            for c in range(self.column()):
+                self._solve_column_match(c)    
+            if prev == self._field:
+                break
+            
             
     def _solve_row(self, row):
         line = self._slide_line(self._left[row], self.column())
