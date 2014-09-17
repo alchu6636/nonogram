@@ -8,6 +8,7 @@ from nonogram import Nonogram, LineMaker, PosIter
 
 BK = Nonogram.BLACK
 WT = Nonogram.WHITE
+UN = Nonogram.UNKNOWN
 
 class TestPosIter(unittest.TestCase):
 
