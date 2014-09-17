@@ -179,6 +179,20 @@ class Nonogram(object):
                     current = buf
         return current
     
+    def _field_str(self, data):
+        if data == Nonogram.BLACK:
+            return "WW"
+        if data == Nonogram.WHITE:
+            return " ."
+        return " ?"
+    
+    def _repr_field(self):
+        buf = []
+        for row in self._field:
+            point = map(lambda x:self._field_str(x), row)
+            buf.append(" ".join(point))
+        return buf
+    
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem

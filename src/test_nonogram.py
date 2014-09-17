@@ -195,6 +195,12 @@ class Test(unittest.TestCase):
         fld = f._slide_line([3,1], 7)
         self.assertEqual(fld, [UN,UN,BK,UN,UN,UN,UN])
         
+    def test_repr_field(self):
+        f = self._create_pat32()
+        f._field = [[1,0,2],
+                    [1,1,0]]
+        result = f._repr_field()
+        self.assertEqual(result, ["WW  .  ?","WW WW  ."])
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
