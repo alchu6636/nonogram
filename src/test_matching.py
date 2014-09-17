@@ -130,6 +130,15 @@ class TestLineMaker(unittest.TestCase):
         line = lm._pos2line([0,1])
         self.assertEqual(line, [BK,BK,WT,WT,BK,BK])
         
+    def test_is_fit(self):
+        n = Nonogram()
+        self.assertEqual(n._is_fit([UN,WT,BK,UN], [WT,WT,BK,WT]), True)
+        self.assertEqual(n._is_fit([UN,WT,UN], [WT,BK,WT]), False)
+        self.assertEqual(n._is_fit([UN,BK,UN], [WT,WT,WT]), False)
+        
+    def test_line_or(self):
+        n = Nonogram()
+        self.assertEqual(n._line_or([WT,BK,BK],[BK,BK,WT]),[UN,BK,UN])
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_create']
     unittest.main()

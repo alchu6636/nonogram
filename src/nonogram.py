@@ -128,6 +128,14 @@ class Nonogram(object):
         result.extend([Nonogram.UNKNOWN]*margin)    
         return result
 
+    def _is_fit(self, field, trial):
+        for (f,t) in zip(field, trial):
+            if f == Nonogram.BLACK and t == Nonogram.WHITE:
+                return False
+            if f == Nonogram.WHITE and t == Nonogram.BLACK:
+                return False
+        return True
+    
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem
