@@ -208,6 +208,12 @@ class Test(unittest.TestCase):
         result = f._repr_left()
         self.assertEqual(result, ["  1","1 2"])
         
+    def test_repf_top(self):
+        f = Nonogram()
+        f.set_top([[1],[3,2]])
+        result = f._repr_top()
+        self.assertEqual(result, ["    3"," 1  2"])
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

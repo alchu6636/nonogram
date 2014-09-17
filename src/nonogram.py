@@ -202,6 +202,18 @@ class Nonogram(object):
         buf = map(lambda x:x[-maxlen:], buf)
         return buf
         
+    def _repr_top(self):
+        maxlen = max(map(len, self._top))
+        buf = []
+        for prof in self._top:
+            temp = map(lambda x:"%2d" % x, prof)
+            temp = ["  "]*maxlen+temp
+            temp = temp[-maxlen:]
+            buf.append(temp)
+        buf2 = [[r[col] for r in buf] for col in range(len(buf[0]))]
+        buf2 = map(lambda x:" ".join(x), buf2)
+        return buf2
+            
 class PosIter(object):
     def __init__(self, nitem, total):
         self._nitem = nitem
