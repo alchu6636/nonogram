@@ -4,7 +4,7 @@ Created on 2014/09/14
 @author: alchu
 '''
 import unittest
-from nonogram import Nonogram 
+from nonogram import Nonogram, _read_profile
 
 class Test(unittest.TestCase):
 
@@ -219,6 +219,13 @@ class Test(unittest.TestCase):
         f.solve()
         result = f.repr()
         self.assertEqual(len(result), 47)
+        
+    def test_read_profile(self):
+        fobj = open('test1.dat', 'rb')
+        prof = _read_profile(fobj)
+        self.assertEqual(len(prof), 2)
+        self.assertEqual(prof[0], [[1,10,1],[2,2]])
+        self.assertEqual(prof[1], [[2],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[1],[2]])
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

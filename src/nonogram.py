@@ -5,6 +5,8 @@ Created on 2014/09/14
 '''
 
 import copy
+import csv
+import argparse
 
 class Nonogram(object):
     WHITE = 0
@@ -288,7 +290,32 @@ class LineMaker(object):
         return buf
     
                    
-            
+def _read_profile(csvfile):            
+    profreader = csv.reader(csvfile, delimiter=' ')
+    leftprof = []
+    for row in profreader:
+        if not row:
+            break
+        if row[0] != '#':
+            leftprof.append(map(int, row))
+    topprof = []
+    for row in profreader:
+        if row[0] != '#':
+            topprof.append(map(int, row))
+    return [leftprof, topprof]
     
 if __name__ == '__main__':
-    pass
+    parser = argparse.ArgumentParser(description='Nonogram solver.')
+    parser.add_argument('fname', metavar='fname', type=str,
+                        help='profile data file (space separated)')
+
+    args = parser.parse_args()
+    fobj = open(args.fname, 'rb')
+    left, top = _read_profile(fobj)
+    fobj.close()
+    n = Nonogram()
+    n.set_left(left)
+    n.set_top(top)
+    n.solve()
+    print n.repr()
+    
