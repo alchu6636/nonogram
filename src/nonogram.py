@@ -32,7 +32,6 @@ class Nonogram(object):
         return len(self._top)
     
     def solve(self):
-        '''stub'''
         self._check_profile()
         self._clear_field()
         for r in range(self.len_row()):
@@ -47,7 +46,6 @@ class Nonogram(object):
                 self._solve_column_match(c)    
             if prev == self._field:
                 break
-            
             
     def _solve_row(self, row):
         line = self._slide_line(self._left[row], self.len_column())
