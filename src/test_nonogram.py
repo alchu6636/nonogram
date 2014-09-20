@@ -221,7 +221,7 @@ class Test(unittest.TestCase):
         self.assertEqual(len(result), 47)
         
     def test_read_profile(self):
-        fobj = open('test1.dat', 'rb')
+        fobj = open('data/test1.dat', 'rb')
         prof = _read_profile(fobj)
         self.assertEqual(len(prof), 2)
         self.assertEqual(prof[0], [[1,10,1],[2,2]])
