@@ -28,15 +28,15 @@ class Test(unittest.TestCase):
 
     def test_set_left(self):
         f = Nonogram()
-        self.assertEqual(f.row(), 0)
+        self.assertEqual(f.len_row(), 0)
         f.set_left([[0],[0]])
-        self.assertEqual(f.row(), 2)
+        self.assertEqual(f.len_row(), 2)
         
     def test_set_top(self):
         f = Nonogram()
-        self.assertEqual(f.column(), 0)
+        self.assertEqual(f.len_column(), 0)
         f.set_top([[0],[0],[0]])
-        self.assertEqual(f.column(), 3)
+        self.assertEqual(f.len_column(), 3)
 
     def test_solve(self):
         f = self._create_pat32()
@@ -102,7 +102,7 @@ class Test(unittest.TestCase):
     def test_clear_field(self):
         f = self._create_pat32()
         f._clear_field()
-        n = f.row()*f.column()
+        n = f.len_row()*f.len_column()
         s = sum(map(sum, f._field))
         self.assertEqual(s, n*2)
         

@@ -25,36 +25,36 @@ class Nonogram(object):
         
         self._top =ary
         
-    def row(self):
+    def len_row(self):
         return len(self._left)
     
-    def column(self):
+    def len_column(self):
         return len(self._top)
     
     def solve(self):
         '''stub'''
         self._check_profile()
         self._clear_field()
-        for r in range(self.row()):
+        for r in range(self.len_row()):
             self._solve_row(r)
-        for c in range(self.column()):
+        for c in range(self.len_column()):
             self._solve_column(c)    
         for n in range(100):
             prev = copy.deepcopy(self._field)
-            for r in range(self.row()):
+            for r in range(self.len_row()):
                 self._solve_row_match(r)
-            for c in range(self.column()):
+            for c in range(self.len_column()):
                 self._solve_column_match(c)    
             if prev == self._field:
                 break
             
             
     def _solve_row(self, row):
-        line = self._slide_line(self._left[row], self.column())
+        line = self._slide_line(self._left[row], self.len_column())
         self._pickdown_row(row, line)
     
     def _solve_column(self, col):
-        line = self._slide_line(self._top[col], self.row())
+        line = self._slide_line(self._top[col], self.len_row())
         self._pickdown_column(col, line)
 
     def _solve_row_match(self, row):
@@ -90,7 +90,7 @@ class Nonogram(object):
     
     def _clear_field(self):
         '''fill all cell in field by UNKNOWN'''
-        self._field = [[Nonogram.UNKNOWN for col in range(self.column())] for row in range(self.row())]
+        self._field = [[Nonogram.UNKNOWN for col in range(self.len_column())] for row in range(self.len_row())]
     
     def _pickup_row(self, pos):
         return self._field[pos]
