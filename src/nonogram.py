@@ -35,9 +35,9 @@ class Nonogram(object):
         self._check_profile()
         self._clear_field()
         for r in range(self.len_row()):
-            self._solve_row(r)
+            self._solve_row_slide(r)
         for c in range(self.len_column()):
-            self._solve_column(c)    
+            self._solve_column_slide(c)    
         for n in range(100):
             prev = copy.deepcopy(self._field)
             for r in range(self.len_row()):
@@ -47,11 +47,11 @@ class Nonogram(object):
             if prev == self._field:
                 break
             
-    def _solve_row(self, row):
+    def _solve_row_slide(self, row):
         line = self._slide_line(self._left[row], self.len_column())
         self._pickdown_row(row, line)
     
-    def _solve_column(self, col):
+    def _solve_column_slide(self, col):
         line = self._slide_line(self._top[col], self.len_row())
         self._pickdown_column(col, line)
 
